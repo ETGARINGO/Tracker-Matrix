@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vehicle Installment Tracker Matrix | WEB247 Solutions</title>
 
     <!-- Favicon -->
@@ -14,12 +14,14 @@
             --cyber-blue: #00f2ff;
             --bg-black: #050505;
             --nav-bg: #111111;
+            --nav-height: 60px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html, body {
@@ -34,13 +36,13 @@
         /* ================= NAV BAR ================= */
 
         .nav-bar {
-            height: 60px;
+            height: var(--nav-height);
             background: var(--nav-bg);
             color: var(--cyber-blue);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            padding: 0 15px;
             border-bottom: 2px solid var(--cyber-blue);
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.25);
             position: relative;
@@ -48,26 +50,35 @@
         }
 
         .nav-title {
-            font-size: 14px;
-            letter-spacing: 1px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
             font-family: 'Courier New', Courier, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 10px;
         }
 
         .btn-home {
             background: transparent;
             color: var(--cyber-blue);
             border: 1px solid var(--cyber-blue);
-            padding: 8px 20px;
-            font-size: 12px;
+            padding: 6px 12px;
+            font-size: 11px;
             font-family: 'Courier New', Courier, monospace;
             text-transform: uppercase;
             text-decoration: none;
             transition: all 0.2s ease-in-out;
             box-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
             cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-height: 32px;
+            display: inline-flex;
+            align-items: center;
         }
 
-        .btn-home:hover {
+        .btn-home:hover, .btn-home:active {
             background: var(--cyber-blue);
             color: #000;
             font-weight: bold;
@@ -78,12 +89,31 @@
 
         .content-frame {
             position: absolute;
-            top: 60px;
+            top: var(--nav-height);
             left: 0;
             width: 100%;
-            height: calc(100% - 60px);
+            height: calc(100% - var(--nav-height));
             border: none;
             background: #ffffff;
+            /* Optimizes scrolling behaviors within iOS and Android frames */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* ================= RESPONSIVE MOBILE ADAPTATION ================= */
+
+        @media (max-width: 480px) {
+            :root {
+                --nav-height: 50px;
+            }
+            
+            .nav-title {
+                font-size: 3.2vw; /* Dynamically sizes to screen real estate without spilling */
+            }
+
+            .btn-home {
+                padding: 4px 10px;
+                font-size: 10px;
+            }
         }
     </style>
 </head>
@@ -92,8 +122,8 @@
 
     <!-- Navigation Bar -->
     <header class="nav-bar">
-        <div class="nav-title"><strong>ACCESS GRANTED //</strong> VEHICLE_INSTALLMENT_TRACKER_MATRIX</div>
-        <a href="https://project.web247.online/PROJECT" class="btn-home">Reload System</a>
+        <div class="nav-title"><strong>GRANTED //</strong> TRACKER_MATRIX</div>
+        <a href="https://project.web247.online/PROJECT" class="btn-home">Reload</a>
     </header>
 
     <!-- Main Content Matrix -->
