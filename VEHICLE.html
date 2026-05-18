@@ -13,6 +13,7 @@
         :root {
             --cyber-blue: #00f2ff;
             --bg-black: #050505;
+            --nav-bg: #111111;
         }
 
         * {
@@ -25,24 +26,31 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-black);
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ================= NAV BAR ================= */
 
         .nav-bar {
             height: 60px;
-            background: #111;
+            background: var(--nav-bg);
             color: var(--cyber-blue);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
             border-bottom: 2px solid var(--cyber-blue);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.25);
             position: relative;
             z-index: 100;
+        }
+
+        .nav-title {
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .btn-home {
@@ -51,15 +59,18 @@
             border: 1px solid var(--cyber-blue);
             padding: 8px 20px;
             font-size: 12px;
+            font-family: 'Courier New', Courier, monospace;
             text-transform: uppercase;
             text-decoration: none;
-            transition: 0.3s ease;
-            box-shadow: 0 0 5px var(--cyber-blue);
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
+            cursor: pointer;
         }
 
         .btn-home:hover {
             background: var(--cyber-blue);
             color: #000;
+            font-weight: bold;
             box-shadow: 0 0 20px var(--cyber-blue);
         }
 
@@ -72,17 +83,24 @@
             width: 100%;
             height: calc(100% - 60px);
             border: none;
-            background: #fff;
+            background: #ffffff;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Main Content -->
+    <!-- Navigation Bar -->
+    <header class="nav-bar">
+        <div class="nav-title"><strong>ACCESS GRANTED //</strong> VEHICLE_INSTALLMENT_TRACKER_MATRIX</div>
+        <a href="https://project.web247.online/PROJECT" class="btn-home">Reload System</a>
+    </header>
+
+    <!-- Main Content Matrix -->
     <iframe 
         src="https://script.google.com/macros/s/AKfycbzHFhJspXNVBEBfBVyniUA6iCHVrCcpKOexW4DumMx-AdaIrROmerFeLaHv0lwyll86/exec"
         class="content-frame"
+        loading="eager"
         allow="geolocation; microphone; camera; payment"
         sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-modals">
     </iframe>
