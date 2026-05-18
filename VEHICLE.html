@@ -12,7 +12,6 @@
     <style>
         :root {
             --cyber-blue: #00f2ff;
-            --cyber-pink: #ff00ff;
             --bg-black: #050505;
         }
 
@@ -28,75 +27,6 @@
             overflow: hidden;
             font-family: 'Courier New', Courier, monospace;
             background: var(--bg-black);
-        }
-
-        /* ================= CYBER ENTRANCE ================= */
-
-        #cyber-entrance {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-black);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 9999;
-            transition: transform 0.8s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.5s ease;
-        }
-
-        .cyber-text {
-            color: var(--cyber-blue);
-            font-size: 2.5rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue);
-            animation: glitch 1s infinite, flicker 0.15s infinite alternate;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .scanning-line {
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            background: var(--cyber-blue);
-            box-shadow: 0 0 15px var(--cyber-blue);
-            animation: scan 2s linear infinite;
-            opacity: 0.4;
-        }
-
-        .lightning-bolt {
-            position: absolute;
-            width: 2px;
-            background: #fff;
-            box-shadow: 0 0 20px 5px var(--cyber-blue);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        @keyframes scan {
-            from { top: 0%; }
-            to { top: 100%; }
-        }
-
-        @keyframes flicker {
-            from { opacity: 0.8; }
-            to { opacity: 1; }
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-4px, 4px); color: var(--cyber-pink); }
-            40% { transform: translate(-4px, -4px); }
-            60% { transform: translate(4px, 4px); }
-            80% { transform: translate(4px, -4px); }
-            100% { transform: translate(0); color: var(--cyber-blue); }
-        }
-
-        .portal-exit {
-            transform: scale(1.3);
-            opacity: 0;
-            pointer-events: none;
         }
 
         /* ================= NAV BAR ================= */
@@ -149,12 +79,6 @@
 
 <body>
 
-    <!-- Cyber Entrance -->
-    <div id="cyber-entrance">
-        <div class="scanning-line"></div>
-        <div class="cyber-text">Loading Matrix...</div>
-    </div>
-
     <!-- Navigation -->
     <header class="nav-bar">
         <div><strong>ACCESS GRANTED //</strong> VEHICLE_INSTALLMENT_TRACKER_MATRIX</div>
@@ -168,35 +92,6 @@
         allow="geolocation; microphone; camera; payment"
         sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-modals">
     </iframe>
-
-    <script>
-        const entrance = document.getElementById('cyber-entrance');
-
-        function createLightning() {
-            const bolt = document.createElement('div');
-            const bolt = document.createElement('div');
-            bolt.className = 'lightning-bolt';
-
-            bolt.style.left = Math.random() * 100 + '%';
-            bolt.style.height = (Math.random() * 60 + 40) + 'vh';
-            bolt.style.top = Math.random() * 50 + '%';
-
-            entrance.appendChild(bolt);
-
-            setTimeout(() => bolt.style.opacity = '1', 10);
-            setTimeout(() => bolt.style.opacity = '0', 100);
-            setTimeout(() => bolt.remove(), 200);
-        }
-
-        const lightningInterval = setInterval(createLightning, 150);
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                clearInterval(lightningInterval);
-                entrance.classList.add('portal-exit');
-            }, 3000);
-        });
-    </script>
 
 </body>
 </html>
